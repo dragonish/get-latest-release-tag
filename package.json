@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "got": "^14.4.6"
+    "@actions/github": "^6.0.0"
   }
 }

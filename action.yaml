@@ -1,0 +1,19 @@
+name: 'get-latest-release-tag'
+author: 'dragonish'
+description: 'Get the latest release tag of the specified repository'
+inputs:
+  repository:
+    description: 'The owner and name of the repository. Format: {owner}/{repo}'
+    required: false
+  token:
+    description: 'Token with specified repository read permission'
+    required: false
+outputs:
+  tag:
+    description: 'The latest release tag'
+runs:
+  using: 'node20'
+  main: 'main.cjs'
+branding:
+  icon: 'tag'
+  color: 'green'
