@@ -39,7 +39,9 @@ async function main() {
       owner,
       repo,
     });
-    core.setOutput('tag', data.tag_name || '');
+    const tagName = data.tag_name || '';
+    core.info(`Get tag: "${tagName}".`);
+    core.setOutput('tag', tagName);
   } catch (err) {
     core.error('Failed to read the specified repository information!');
     core.setFailed((<Error>err).message);
