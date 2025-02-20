@@ -31260,7 +31260,7 @@ async function main() {
     else {
         coreExports.info('No repository specified, read current repository.');
     }
-    coreExports.info(`Work context: ${owner}/${repo}.`);
+    coreExports.info(`Target repository: ${owner}/${repo}.`);
     const token = coreExports.getInput('token', { required: true });
     const octokit = githubExports.getOctokit(token);
     try {

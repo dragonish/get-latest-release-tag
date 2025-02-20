@@ -30,7 +30,7 @@ async function main() {
     core.info('No repository specified, read current repository.');
   }
 
-  core.info(`Work context: ${owner}/${repo}.`);
+  core.info(`Target repository: ${owner}/${repo}.`);
 
   const token = core.getInput('token', { required: true });
   const octokit = github.getOctokit(token);
