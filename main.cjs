@@ -31273,7 +31273,7 @@ async function main() {
         coreExports.setOutput('tag', tagName);
     }
     catch (err) {
-        coreExports.error('Failed to read the specified repository information!');
+        coreExports.error('Failed to get the latest release of the specified repository!');
         coreExports.setFailed(err.message);
         return;
     }

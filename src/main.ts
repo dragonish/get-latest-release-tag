@@ -43,7 +43,7 @@ async function main() {
     core.info(`Get tag: "${tagName}".`);
     core.setOutput('tag', tagName);
   } catch (err) {
-    core.error('Failed to read the specified repository information!');
+    core.error('Failed to get the latest release of the specified repository!');
     core.setFailed((<Error>err).message);
     return;
   }
