@@ -1,4 +1,4 @@
-name: 'get-latest-release-tag'
+name: 'Get Repository Latest Release Tag'
 author: 'dragonish'
 description: 'Get the latest release tag of the specified repository'
 inputs:
