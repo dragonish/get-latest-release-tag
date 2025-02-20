@@ -5,8 +5,7 @@
   "main": "main.cjs",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "test": "mocha"
+    "build": "rollup -c"
   },
   "keywords": [
     "action"
