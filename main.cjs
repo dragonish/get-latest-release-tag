@@ -31261,7 +31261,8 @@ async function main() {
         coreExports.info('No repository specified, read current repository.');
     }
     coreExports.info(`Work context: ${owner}/${repo}.`);
-    const octokit = githubExports.getOctokit(coreExports.getInput('token'));
+    const token = coreExports.getInput('token', { required: true });
+    const octokit = githubExports.getOctokit(token);
     try {
         const { data } = await octokit.rest.repos.getLatestRelease({
             owner,

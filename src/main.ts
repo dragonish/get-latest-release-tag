@@ -32,7 +32,8 @@ async function main() {
 
   core.info(`Work context: ${owner}/${repo}.`);
 
-  const octokit = github.getOctokit(core.getInput('token'));
+  const token = core.getInput('token', { required: true });
+  const octokit = github.getOctokit(token);
   try {
     const { data } = await octokit.rest.repos.getLatestRelease({
       owner,
