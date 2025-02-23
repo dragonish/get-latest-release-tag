@@ -31267,6 +31267,7 @@ async function main() {
     try {
         const preRelease = coreExports.getBooleanInput('pre-release');
         if (preRelease) {
+            coreExports.info('Allow the latest tag that may be pre-release.');
             const { data } = await octokit.rest.repos.listReleases({
                 owner,
                 repo,
