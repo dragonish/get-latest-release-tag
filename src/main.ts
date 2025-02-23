@@ -34,10 +34,16 @@ async function main() {
 
   const token = core.getInput('token', { required: true });
   const octokit = github.getOctokit(token);
-  let tagName = '';
+  let tagName = '',
+    preRelease = false;
 
   try {
-    const preRelease = core.getBooleanInput('pre-release');
+    preRelease = core.getBooleanInput('pre-release');
+  } catch {
+    preRelease = false;
+  }
+
+  try {
     if (preRelease) {
       core.info('Allow the latest tag that may be pre-release.');
       const { data } = await octokit.rest.repos.listReleases({

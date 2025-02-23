@@ -31263,9 +31263,14 @@ async function main() {
     coreExports.info(`Target repository: ${owner}/${repo}.`);
     const token = coreExports.getInput('token', { required: true });
     const octokit = githubExports.getOctokit(token);
-    let tagName = '';
+    let tagName = '', preRelease = false;
     try {
-        const preRelease = coreExports.getBooleanInput('pre-release');
+        preRelease = coreExports.getBooleanInput('pre-release');
+    }
+    catch {
+        preRelease = false;
+    }
+    try {
         if (preRelease) {
             coreExports.info('Allow the latest tag that may be pre-release.');
             const { data } = await octokit.rest.repos.listReleases({
