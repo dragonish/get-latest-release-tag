@@ -34,19 +34,37 @@ async function main() {
 
   const token = core.getInput('token', { required: true });
   const octokit = github.getOctokit(token);
+  let tagName = '';
+
   try {
-    const { data } = await octokit.rest.repos.getLatestRelease({
-      owner,
-      repo,
-    });
-    const tagName = data.tag_name || '';
-    core.info(`Get tag: "${tagName}".`);
-    core.setOutput('tag', tagName);
+    const preRelease = core.getBooleanInput('pre-release');
+    if (preRelease) {
+      const { data } = await octokit.rest.repos.listReleases({
+        owner,
+        repo,
+        page: 1,
+        per_page: 1,
+      });
+
+      if (data.length === 0) {
+        throw new Error('No release list was obtained!');
+      }
+      tagName = data[0].tag_name || '';
+    } else {
+      const { data } = await octokit.rest.repos.getLatestRelease({
+        owner,
+        repo,
+      });
+      tagName = data.tag_name || '';
+    }
   } catch (err) {
     core.error('Failed to get the latest release of the specified repository!');
     core.setFailed((<Error>err).message);
     return;
   }
+
+  core.info(`Get tag: "${tagName}".`);
+  core.setOutput('tag', tagName);
 }
 
 main();

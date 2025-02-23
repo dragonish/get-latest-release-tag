@@ -8,6 +8,9 @@ inputs:
   repository:
     description: 'The owner and name of the repository. Format: {owner}/{repo}'
     required: false
+  pre-release:
+    description: 'Allow the latest tag that may be pre-release'
+    required: false
 outputs:
   tag:
     description: 'The latest release tag'
